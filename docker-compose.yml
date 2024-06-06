@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  www:
+    build: .
+    container_name: app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www
+    command: ["symfony", "server:start"]
+  composer:
+    build: .
+    container_name: composer
+    command: ["composer", "install"]
+    volumes:
+      - ./:/var/www
+  npm:
+    build: .
+    container_name: npm
+    command: bash -c "npm install && npm run watch"
+    volumes:
+      - ./:/var/www

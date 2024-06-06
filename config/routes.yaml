@@ -1,0 +1,21 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+    
+delete_product:
+    path: /api/product/delete/{id}
+    controller: App\Controller\ProductController::delete
+    methods: DELETE
+
+update_product:
+    path : /api/product/update
+    controller: App\Controller\ProductController::update
+    methods: PUT
+
+add_product:
+    path: /api/product/add
+    controller: App\Controller\ProductController::add
+    methods: POST
+

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'home_index' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body p-5">
+            <h1 class="text-center">Bienvenue sur le test technique de Coquille !</h1>
+            <div class="mt-5 text-left">
+                <p>
+                    Le but de ce test est de mieux connaître tes compétences, ce n'est pas un examen d'entrée chez Coquille.
+                    Nous serons plus attentifs à ta manière de coder et de résoudre les problèmes plutôt qu'au résultat final.
+                </p>
+                <p>
+                    Le test dure environ <strong>2 heures</strong>, essaye de ne pas y passer plus de temps.
+                    Ce n'est pas grave si tout n'est pas terminé.
+                </p>
+                <p>
+                    Concentre-toi d'abord sur <strong>les 2 premiers exercices</strong> qui sont assez simples.
+                    Ensuite, si tu manques de temps, tu peux choisir entre <strong>l'exercice 3</strong> si tu as un profil plutôt Front-end ou <strong>l'exercice 4</strong> si tu as un profil plutôt Back-end.
+                </p>
+            </div>
+            <div class="mt-5 text-center">
+                N'hésite pas à me contacter si tu as des questions ou si tu restes bloqué trop longtemps sur un exercice.
+            </div>
+            <div class="mt-3 text-center">
+                <h4>Bonne chance !</h4>
+            </div>
+            <hr>
+            <div class="text-left">
+                <ul>
+                    <li class="my-4">
+                        <strong>1.</strong> Sur la page des clients, un problème de pagination empêche le changement de
+                        page. Peux-tu le corriger, s'il te plaît ?
+                    </li>
+                    <li class="my-4">
+                        <strong>2.</strong> Il faudrait ajouter la colonne "Société" dans le tableau des clients, le champ est déjà
+                        présent dans la BDD et le model, il faut seulement l'afficher. (Attention, Twig n'aime pas le snake_case)
+                    </li>
+                    <li class="my-4">
+                        <strong>3.</strong> Intégrer le mock up <a
+                            href="{{ path("home_download", {filename: "mock-up_contact_page.png"}) }}">suivant</a> sur
+                        la page "Contact". Tu peux utiliser <strong>symfony run watch</strong> pour que ton scss se compile
+                        automatiquement.
+                        N'hésite pas à améliorer le style si tu en as envie.
+                    </li>
+                    <li class="my-4">
+                        <strong>4.</strong> Terminer le CRUD (Create, Read, Update, Delete) pour la page produit. Le but est de faire fonctionner les boutons d'ajout, de modification et de suppression.
+                        Tout le code de la vue Produits est dans le fichier <strong>assets/js/vue/Product.vue</strong> pour simplifier un peu l'exercice.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

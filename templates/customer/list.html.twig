@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'customer_list' %}
+
+{% block body %}
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <h1>Liste des clients</h1>
+                <p class="text-secondary">(Données réelles)</p>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Date d'inscription</th>
+                    <th scope="col">Société</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for customer in paginator.results %}
+                    <tr>
+                        <td>{{ customer.firstname }}</td>
+                        <td>{{ customer.lastname }}</td>
+                        <td>{{ customer.mail }}</td>
+                        <td>{{ customer.dateAdd|date('d-m-Y H:i') }}</td>
+                        <td>{{ customer.societyname}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {% if paginator.hasToPaginate %}
+                <nav class="row justify-content-md-center">
+                    <ul class="pagination">
+                        <li class="page-item {% if paginator.hasPreviousPage == false %}disabled{% endif %}">
+                            <a class="page-link" href="{{ path('customer_list_paginated', {page: paginator.previousPage}) }}" tabindex="-1">Previous</a>
+                        </li>
+
+                        {% for i in 1..paginator.lastPage %}
+                            {% if i == paginator.currentPage %}
+                                <li class="page-item active">
+                                  <span class="page-link">
+                                    {{ i }}
+                                    <span class="sr-only">(current)</span>
+                                  </span>
+                                </li>
+                                {# C'est ici qu'il y a les boutons numéroté des pages #}
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="{{ path('customer_list_paginated', {page: i}) }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <li class="page-item {% if paginator.hasNextPage == false %}disabled{% endif %}">
+                            <a class="page-link" href="{{ path('customer_list_paginated', {page: paginator.nextPage}) }}">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
